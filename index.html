@@ -1,0 +1,1747 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Présentation générale Symfony</title>
+
+    <meta name="description" content="« Symfony, présentation générale » à AMI">
+    <meta name="author" content="Anthony Rossi">
+    <!-- Powered by the awesome http://lab.hakim.se/reveal-js/ -->
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/github.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write('<link rel="stylesheet" href="css/print/' + ( window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">');
+    </script>
+
+    <style type="text/css">
+        .reveal small {
+            vertical-align: baseline;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section>
+            <h1>Symfony</h1>
+
+            <p>avouez... vous regrettez déjà de ne pas l'avoir connu plus tôt.</p>
+
+            <p>
+                <small>Une présentation par <a href="https://fr.linkedin.com/in/anthonyrossi11
+">Anthony Rossi</a> / <a href="http://amisw.com/">AMI Software</a><br/>
+                    Montpellier, le soleil, tout ça...
+                </small>
+            </p>
+        </section>
+
+        <section id="introduction_sf">
+            <h2>Symfony 3, qu'est-ce que c'est ?</h2>
+        </section>
+
+        <section>
+            <h2>Un framework ?</h2>
+
+            <ul>
+                <li class="fragment">Evolution facile</li>
+                <li class="fragment">Code épuré</li>
+                <li class="fragment">Boite à outils</li>
+                <li class="fragment">Automatisation des tâches récurrentes</li>
+                <li class="fragment">Testé industriellement par plein de lutins</li>
+                <li class="fragment">Une méthodologie</li>
+                <li class="fragment">Composants (REDISTRIBUABLE &amp; AUTONOME)</li>
+            </ul>
+
+            <aside class="notes">
+                <p>Un des buts principaux d'un framework est de garder le code <b>organisé</b> et permettre à
+                    l'application
+                    d'<b>évoluer</b> facilement au fil du temps en évitant le mélange des appels de BDD, HTML et autres
+                    codes de PHP dans le même script.</p>
+
+                <p>Boite à outils : On peut comparer un framework à un ensemble de briques. (= composant). </p>
+
+                <p>Un framework est au développeur ce que la boite à outils est au bricoleur.</p>
+
+                <p>Automatisation des tâches récurrentes : Pour symfony par exemple, il y a un composant Routing,
+                    Validation, etc.</p>
+
+                <p>Méthodologie: On développe à l'aide d'un langage. On apprend une syntaxe, des fonctions, des
+                    mots-clés... Toute une grammaire<br/>C'est là que le framework intervient ! Il énonce des
+                    conventions d’écriture et d’organisation destinées à rendre plus efficace, en homogénéisant et
+                    clarifiant. Il s’inspire des bonnes pratiques déjà existantes, notamment en termes de style. Enfin,
+                    il structure et favorise la discipline du code produit, et son indépendance à l’égard de toute
+                    solution logicielle ou matérielle.
+                </p>
+            </aside>
+        </section>
+
+        <section>
+            <h2>Symfony : Principes fondamentaux</h2>
+
+            <img src="images/sf-app-flow.png" alt="Vespolina" style="width: 100%"/>
+
+            <aside class="notes">
+                <p>Framework PHP !</p>
+
+                <p>En tant que dev, lorsque l'on développe une application Symfony, notre réponsabilité est d'écrire un
+                    code qui mappe la requête utilisateur (http....) à une ressource associée (la page d'Accueil, par
+                    exemple.) </p>
+
+                <p>Le code à exécuter (point d'entrée) est une méthode, appelée "Action" d'une classe, appelée
+                    "Contrôleur"</p>
+
+                <p>Routing qui redirige vers la bonne méthode</p>
+
+                <p>Le dev n'a plus qu'à créer la response.</p>
+            </aside>
+        </section>
+
+        <section>
+            <section>
+                <h2>Outils Symfony</h2>
+                <aside class="notes">
+                    <p>Maintenant vous savez que le but de chaque app web est d'interpréter chaque requête afin de créer
+                        une réponse appropriée.</p>
+
+                    <p>Quand une application s'élargit, il devient de plus en plus difficile de maintenant un code
+                        organisé et maintenable. </p>
+
+                    <p>Systématiquement, les mêmes tâches complexes se répètent encore et encore : persistence de
+                        données dans la base, rendu et réutilisation des templates, gestion des soumissions de
+                        formulaires, envoi d'emails, validation des données utilisateur, gestion de la sécurité...</p>
+
+                    <p>Félicitations ! Symfony est là pour vous.</p>
+
+                </aside>
+            </section>
+
+            <section>
+
+                <h3>Outils standalone: Symfony Components</h3>
+
+                <ul>
+                    <li class="fragment">HttpFoundation</li>
+                    <li class="fragment">Routing</li>
+                    <li class="fragment">Form</li>
+                    <li class="fragment">Validator</li>
+                    <li class="fragment">Templating</li>
+                    <li class="fragment">Security</li>
+                    <li class="fragment">Translation</li>
+                </ul>
+                <aside class="notes">
+                    <p>Du coup, c'est quoi Symfony ? Symfony est avant tout une collection de plus de 20 librairies
+                        indépendants qui peuvent être utilisées dans n'importe quel projet PHP. Ces librairies,
+                        appelées "Composants Symfony".</p>
+
+                    <p>HttpFoundation: Contient les classes "Request" et "Response"
+                        ainsi que d'autres classes utiles pour la gestion des sessions ou de l'upload des fichiers.</p>
+
+                    <p>Routing: Système de routing puissant et rapide qui permet de
+                        mapper une URI spécifique (ex: /capitalized-documents) à des informations concernant la façon
+                        dont la requête doit être gérée (ex, exécuter cgetCapitalizedDocumentsAction()).</p>
+
+                    <p>FORM: Le composant form est un outil qui aide à résoudre le problème de permettre les
+                        utilisateurs à interragir avec les données et modifier les données dans l'application. Bien
+                        que, traditionnellement ce fut géré via les formulaires HTML, le composant se concentre sur
+                        le traitement de la données vers et depuis le client et l'application, que la donnée soit
+                        récupérée via un formulaire HTML ou via une API.</p>
+
+                    <p>Validator: Un système pour créer des règles de validation pour les données afin de les
+                        valider.</p>
+
+                    <p>Templating: Une boîte à outils pour le rendu des templates, qui gère les héritages et qui
+                        effectue d'autres tâches communes. </p>
+
+                    <p>Security: Une puissante librairie pour gérer tous types de
+                        sécurité dans une application.</p>
+
+                    <p>Translation: Un composant pour traduire des chaînes de caractères.</p>
+
+                    <p>Conclusion: Chacun de ces composants est découplé et peut être utilisé dans n'importe quel projet
+                        PHP, avec ou sans le framework Symfony.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Symfony Framework</h3>
+
+                <p>2 tâches :</p>
+                <ul>
+                    <li>Fourni une sélection de librairies</li>
+                    <li>Fourni une configuration solide et attache tous les composants ensemble.</li>
+                </ul>
+                <aside class="notes">
+                    <p>Du coup, c'est quoi Symfony Framework ? Symfony Framework est une librairie PHP qui rempli deux
+                        missions :</p>
+                    <ul>
+                        <li>Fournir une selection de librairies : (Symfony Components) et 3rd-party components (ex:
+                            Swift Mailer)
+                        </li>
+                        <li>Fourni une configuration solide et une librairie "colle" qui attache toutes les librairies
+                            ensemble. Par exemple, intégrer tous les composants un à un demande beaucoup plus de boulot
+                            qu'en utilisant le framework directement (gestion des caches, etc.)
+                        </li>
+                        <li>En résumé, le but du framework est d'intégrer plusieurs outils indépendants afin de fournir
+                            une expérience cohérente pour le développeur. Même si le framework lui-même est un bundle
+                            Symfony (c'est à dire un plugin) qui peut être configuré ou remplacé complètement.
+                        </li>
+                        <li>Symfony fournit une puissante compilation d'outils pour rapidement développer des
+                            applications web sans imposer l'utilisation de certains composants. Les utilisateurs normaux
+                            peuvent rapidement commencer des développement en suivant le squelette conseillé. Pour les
+                            utilisateurs avancés, il n'y a pas de limites.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+
+        <section>
+            <h2>Environnements</h2>
+
+            <ul>
+                <li class="fragment">
+                    Environnements de base :
+                    <ul>
+                        <li>Prod</li>
+                        <li>Dev</li>
+                        <li>Test</li>
+                    </ul>
+                </li>
+                <li class="fragment">Différents fichiers de configuration :
+                    <ul>
+                        <li>app/config/config_prod.yml</li>
+                        <li>app/config/config_dev.yml</li>
+                        <li>app/config/config_test.yml</li>
+                    </ul>
+                </li>
+                <li class="fragment">Différents points d'entrée :
+                    <ul>
+                        <li>web/app.php</li>
+                        <li>web/app_dev.php</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <aside class="notes">
+                <p>Chaque application est une combinaison de code et de configurations qui indique comment l'application
+                    se comporte.</p>
+
+                <p>Par exemple, le niveau d'erreur change de prod à dev.</p>
+
+                <p>Dans Symfony, l'idée des environnements est l'idée que le même code peut être lancé selon des
+                    configurations différentes.</p>
+
+                <p>Par exemple, l'environnement dev peut utiliser une configuration rendant le développement plus facile tandis que l'environnement de prod permettra d'optimiser l'application pour la rapidité.</p>
+            </aside>
+        </section>
+
+        <section>
+            <section>
+                <h2>Contrôleurs</h2>
+            </section>
+
+            <section>
+                <h3>Généralités</h3>
+
+                <ul>
+                    <li class="fragment">Récupère une requête HTTP (objet <strong>Request</strong>) et retourne une
+                        réponse HTTP (objet <strong>Response</strong>).
+                    </li>
+                </ul>
+
+                <pre class="fragment"><code>&lt;?php
+use Symfony\Component\HttpFoundation\Response;
+
+public function helloAction()
+{
+    return new Response('Hello world!');
+}</code></pre>
+
+                <aside class="notes">
+                    <p>Un contrôleur est une fonction appelable qui récupère l'information de la requête HTTP afin de
+                        créer
+                        et retourner une réponse HTTP (grâce à l'objet Response).</p>
+
+                    <p>La réponse peut être une page HTML, un XML, du Json, une image, une redirection, un poney,
+                        etc.</p>
+
+                    <p>[Donner des exemples : récupération d'un article, création d'une source, ...]</p>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Cycle de vie</h3>
+
+                <ul>
+                    <li class="fragment">Chaque requête exécute un fichier du contrôleur frontal (app.php, app_dev.php)</li>
+                    <li class="fragment">Le front contrôleur initialize le kernel Symfony et passe un objet <strong>Request</strong> à gérer.</li>
+                    <li class="fragment">Symfony core demande au composant router d'inspecter la requête.</li>
+                    <li class="fragment">Le router match l'URL à une route spécifique et retourne les informations sur la route.</li>
+                    <li class="fragment">Le contrôleur retourné par le router est exécuté, qui crée et retourne l'objet <strong>Response</strong> approprié.</li>
+                    <li class="fragment">Les headers HTTP et le contenu de la <strong>Response</strong> sont retournés au client.</li>
+                </ul>
+            </section>
+
+            <section>
+                <pre><code class="php">namespace NinjaFactory\GameBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class GameController extends Controller
+{
+    public function indexAction(Request $request)
+    {
+        $games = $this->doctrine->getRepository(Game::class)->findAll();
+
+        return $this->render('game/index.html.twig', array(
+            'games' => $games,
+        ));
+    }
+}
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Routing</h2>
+
+                <ul>
+                    <li class="fragment"><strong>URLs sexy</strong> (index.php?game_slug=halo devient /game/halo)</li>
+                    <li class="fragment"><strong>Flexibilité</strong> (changement facile des routes)</li>
+                    <li class="fragment"><strong>Routes complexes</strong> (expressions régulières, etc.)</li>
+                    <li class="fragment"><strong>Génération facile</strong></li>
+                    <li class="fragment"><strong>Debug inclu</strong></li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Création de routes</h3>
+
+                <h6>Formats de création</h6>
+                <ul>
+                    <li class="fragment">PHP</li>
+                    <li class="fragment">YAML</li>
+                    <li class="fragment">XML</li>
+                    <li class="fragment">Annotation (à l'intérieur des contrôleurs)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Création de routes</h3>
+
+                <h6>En YAML...</h6>
+
+                <pre><code class="yml">game_show:
+    path:      /games/{slug}
+    defaults:  { _controller: NinjaFactory:GameBundle:Game:show }
+    methods:  [GET]
+article_list:
+    path:      /articles/{page}
+    defaults:  { _controller: NinjaFactory:BlogBundle:Aticle:list, page: 1 }
+    requirements:
+        page:  \d+
+    methods:  [GET, HEAD]</code></pre>
+            </section>
+
+            <section>
+                <h3>Génération d'URLs</h3>
+
+                <h5>En PHP</h5>
+                <pre><code class="php">$uri = $this->get('router')->generate('game_show', array(
+    'slug' => 'halo-5'
+));
+// /games/halo-5</code></pre>
+                <h5>En TWIG</h5>
+                <pre><code class="twig">&lt;a href="{{ path('game_show', {'slug': 'halo-5'}) }}"&gt;
+    See Halo 5 page
+&lt;/a&gt;</code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Templating : Twig</h2>
+
+                <ul>
+                    <li class="fragment">Code clair et lisible</li>
+                    <li class="fragment">Héritage de templates et de layouts</li>
+                    <li class="fragment">Tags et helpers</li>
+                    <li class="fragment">Pleins d'autres trucs en fait</li>
+                </ul>
+
+                <aside class="notes">
+                    <p>Comme vous le savez, le contrôleur est responsable de la gestion de chaque requête qui arrive. En
+                        réalité, le contrôleur délégue presque tout le travail afin que le code puisse être réutilisé et
+                        testé.</p>
+
+                    <p>Quand un contrôleur doit générer du HTML et d'autres assets, il délègue au moteur de template.</p>
+
+                    <p>Introduction TWIG</p>
+                </aside>
+            </section>
+
+            <section>
+                <pre><code class="twig">{# app/Resources/views/game/list.html.twig #}
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    &lt;h1&gt;Last games created&lt;h1&gt;
+
+    {% for game in games %}
+        {{ include('game/game_list.html.twig', { 'game': game }) }}
+    {% endfor %}
+{% endblock %}</code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Les bundles</h2>
+
+                <ul>
+                    <li class="fragment">Plugin-like</li>
+                    <li class="fragment">Tout est bundle</li>
+                    <li class="fragment">Un bundle est un ensemble structuré de fichiers...</li>
+                    <li class="fragment">...de différents types</li>
+                </ul>
+
+                <aside class="notes">
+                    <p>Plugin-like: Un bundle ressemble à un plugin, un composant.</p>
+                    <p>Tout est bundle: Le coeur de Symfony ainsi que le code que vous écrivez fait partie d'un bundle.</p>
+
+                    <p>Les bundles sont la ressource principale de Symfony.</p>
+                    <p>Cela permet d'utiliser des fonctionnalités pré-construites dans des bundles externes.</p>
+
+                    <p>Un bundle est un ensemble structuré de fichiers: Un bundle est un répertoire contenant une collection de fichiers qui implémentent une fonctionnalité.</p>
+                    <p>Par exemple, on pourrait avoir un BlogBundle, ForumBundle, UserBundle, etc.</p>
+
+                    <p>...de différents types: Fichiers PHP, Templates, Stylesheets, JS, tests, etc.</p>
+
+                    <p>Donner exemple d'héritage de bundle externe (comme avec FosUser)</p>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Activation des bundles</h3>
+
+                <pre><code class="php">// app/AppKernel.php
+public function registerBundles()
+{
+    $bundles = array(
+        new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+        new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+        new Symfony\Bundle\TwigBundle\TwigBundle(),
+        new Symfony\Bundle\MonologBundle\MonologBundle(),
+        new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+        new Symfony\Bundle\DoctrineBundle\DoctrineBundle(),
+        new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+        new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+        new AppBundle\AppBundle(),
+    );
+
+    if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+        $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+        $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+    }
+
+    return $bundles;
+}</code></pre>
+                <aside class="notes">
+                    <p>Expliquer que les bundles dépendent de l'environnement.</p>
+                    <p>Donner exemple d'utilisation de bundle (par exemple bundle payant)</p>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Structure de fichiers d'un bundle</h3>
+
+                <h4>Dossiers de base</h4>
+
+                <ul>
+                    <li class="fragment"><strong>Controller/</strong><small>Contient les... contrôleurs \o/</small></li>
+                    <li class="fragment"><strong>DependencyInjection/</strong><small>Détient certaines classes d'extension du Dependency Injection : importation des configurations des services, enregistrement des passes du compilateur ou autre.</small></li>
+                    <li class="fragment"><strong>Entity/</strong><small>Contient les entités</small></li>
+                    <li class="fragment"><strong>Form/</strong><small>Contient les formulaires</small></li>
+                    <li class="fragment"><strong>Resource/config/</strong><small>Contient la configuration (routing.yml, services.yml, ...)</small></li>
+                    <li class="fragment"><strong>Resource/views/</strong><small>Contient les templates organisés, si possible, par nom de contrôleur.</small></li>
+                    <li class="fragment"><strong>Resource/public/</strong><small>Contient les assets web (images, style, ...). Ce répertoire sera copié dans /web via la commande <code>assets:install</code>.</small></li>
+                    <li class="fragment"><strong>Tests/</strong><small>Une idée ?</small></li>
+                </ul>
+
+                <aside class="notes">
+                    <p>La structure d'un bundle est simple et flexible.</p>
+                    <p>Par défaut, un bundle suit des conventions afin de garder le code cohérent entre les bundles...</p>
+                    <p>Mais ce n'est pas obligatoire, on peut créer des dossiers où on veut, les fichiers auront pour namespace l'arborescence du fichier dans le bundle.</p>
+
+                    <p><strong>Resource/public/</strong>: Copié par lien symbolique ou non.</p>
+                </aside>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>L'ORM : Doctrine</h2>
+
+                <ul>
+                    <li><strong>Persistance et lecture d'information.</strong>
+                        <small>Tâche commune et redondance à (presque) chaque application.</small>
+                    </li>
+                    <li><strong>ORM</strong>: Couche d'abstraction</li>
+                    <li>ORM supportés par Symfony : <strong>Doctrine</strong> et <strong>Propel</strong></li>
+                    <li>Doctrine ORM intégré par défaut dans <strong>Symfony Standard Edition</strong>.</li>
+                </ul>
+
+                <aside class="notes">
+                    <p>Une tâche très commune et redondante pour chaque application est de pouvoir persister et lire
+                        l'information de/vers une Base de données.</p>
+
+                    <p>ORM: Un ORM (Object-relational mapping, ou Mapping objet-relationnel en français) est une couche d'abstraction de la base de données visant à créer l'illusion d'une base de données orientée objet à partir d'une base de données relationnelle.
+                        L'ORM définit des correspondances entre la base de données et les objets du langage en question, les objets PHP pour notre cas.</p>
+
+                    <p>Dans cette partie, on apprendra la philosophie de base derrière Doctrine.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Création d'une entité</h3>
+
+                <pre><code>// src/AppBundle/Entity/Product.php
+namespace AppBundle\Entity;
+
+class Product
+{
+    private $name;
+    private $price;
+    private $description;
+
+    // Getters and Setters here (can be auto generated by doctrine command)
+}</code></pre>
+
+                <aside class="notes">
+                    <p>Supposez qu'on crée une application où des produits ont besoin d'être affichés.</p>
+                    <p>Sans penser à Doctrine ni aux BDD, on souhaiterait avoir un objet Product qui représente ces produits.</p>
+                    <p>La classe affichée est appelée "Entité"</p>
+                    <p>Pour l'instant, notre classe n'est qu'une classe.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Ajout de l'information de mapping</h4>
+
+                <img src="images/doctrine-mapping-information.png"/>
+
+                <aside class="notes">
+                    <p>Doctrine allows you to work with databases in a much more interesting way than just fetching rows
+                        of scalar data into an array. Instead, Doctrine allows you to fetch entire objects out of the
+                        database, and to persist entire objects to the database. For Doctrine to be able to do this, you
+                        must map your database tables to specific PHP classes, and the columns on those tables must be
+                        mapped to specific properties on their corresponding PHP classes.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Ajout de l'information de mapping</h4>
+
+                <pre><code class="php">// src/AppBundle/Entity/Product.php
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+* @ORM\Entity
+* @ORM\Table(name="product")
+*/
+class Product
+{
+    /**
+    * @ORM\Column(type="integer")
+    * @ORM\Id
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    private $id;
+
+    /**
+    * @ORM\Column(type="string", length=100)
+    */
+    private $name;
+
+    /**
+    * @ORM\Column(type="decimal", scale=2)
+    */
+    private $price;
+
+    /**
+    * @ORM\Column(type="text")
+    */
+    private $description;
+
+    // Getters and Setters here
+}</code></pre>
+            </section>
+
+            <section>
+                <h4>Enregistrement d'objet dans la base</h4>
+
+                <pre><code class="php">// src/AppBundle/Controller/DefaultController.php
+
+// ...
+use AppBundle\Entity\Product;
+use Symfony\Component\HttpFoundation\Response;
+
+// ...
+public function createAction()
+{
+    $product = new Product();
+    $product->setName('Keyboard');
+    $product->setPrice(19.99);
+    $product->setDescription('Ergonomic and stylish!');
+
+    $em = $this->getDoctrine()->getManager();
+
+    // tells Doctrine you want to (eventually) save the Product (no queries yet)
+    $em->persist($product);
+
+    // actually executes the queries (i.e. the INSERT query)
+    $em->flush();
+    // After the flush, product has an ID ($product->getId())
+
+    return new Response('Saved new product with id '.$product->getId());
+}</code></pre>
+
+                <aside class="notes">
+                    <p>Explications</p>
+                    <p>La création et la modification fonctionnent de la même manière, permettant de regrouper les parties du code concernant l'écriture des objets.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Récupération d'objets dans la base</h4>
+
+                <pre><code class="php">public function showAction($productId)
+{
+    $product = $this->getDoctrine()
+                    ->getRepository('AppBundle:Product')
+                    ->find($productId);
+
+    if (!$product) {
+        throw $this->createNotFoundException(
+            'No product found for id '.$productId
+        );
+    }
+
+    // ... do something, like pass the $product object into a template
+}</code></pre>
+            </section>
+
+            <section>
+                <h4>Autres méthodes de récupération</h4>
+
+                <pre><code>// query for a single product by its primary key (usually "id")
+$product = $repository->find($productId);
+
+// dynamic method names to find a single product based on a column value
+$product = $repository->findOneById($productId);
+$product = $repository->findOneByName('Keyboard');
+
+// dynamic method names to find a group of products based on a column value
+$products = $repository->findByPrice(19.99);
+
+// find *all* products
+$products = $repository->findAll();
+
+// query for a single product matching the given name and price
+$product = $repository->findOneBy(
+    array('name' => 'Keyboard', 'price' => 19.99)
+);
+
+// query for multiple products matching the given name, ordered by price
+$products = $repository->findBy(
+    array('name' => 'Keyboard'),
+    array('price' => 'ASC')
+);</code></pre>
+            </section>
+
+
+            <section>
+                <h4>Mise à jour d'objet dans la base</h4>
+
+                <pre><code class="php">public function updateAction($productId)
+{
+    $em = $this->getDoctrine()->getManager();
+    $product = $em->getRepository('AppBundle:Product')->find($productId);
+
+    if (!$product) {
+        throw $this->createNotFoundException(
+            'No product found for id '.$productId
+        );
+    }
+
+    $product->setName('New product name!');
+
+    $em->flush();
+
+    return $this->redirectToRoute('homepage');
+}</code></pre>
+
+                <aside class="notes">
+                    <p>Explications</p>
+                    <p>Ici, pas de persist, puisque le persist annonce juste à Doctrine de "watch" l'objet.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Suppression d'objet dans la base</h4>
+
+                <pre><code class="php">$em->remove($product);
+$em->flush();</code></pre>
+
+                <aside class="notes">
+                    <p>Explications</p>
+                    <p>Ici, pas de persist, puisque le persist annonce juste à Doctrine de "watch" l'objet.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Requêtage d'objets</h4>
+                <h5>Avec DQL</h5>
+
+                <pre><code class="php">$em = $this->getDoctrine()->getManager();
+$query = $em->createQuery(
+    'SELECT p
+     FROM AppBundle:Product p
+     WHERE p.price > :price
+     ORDER BY p.price ASC'
+)->setParameter('price', '19.99');
+
+$products = $query->getResult(); // Return array of Product objects</code></pre>
+
+                <aside class="notes">
+                    <p>Nous avons déjà vu comment effectuer des requêtes simples à l'aide des méthodes de bases, mais il est bien sûr possible de créer ses propres requêtes plus complexes.</p>
+
+                    <p>Si vous êtes habitué au SQL, alors le DQl vous semblera naturel. La grosse différence est que
+                        vous avez besoin de penser "objet" au lieu de rows de la BDD. Par exemple, vous sélectionnez les données
+                        de "AppBundle:Product" et pas du nom de la table.
+                    </p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Requêtage d'objets</h4>
+                <h5>Avec le QueryBuilder doctrine</h5>
+
+                <pre><code class="php">$em = $this->getDoctrine()->getManager();
+
+// createQueryBuilder automatically selects FROM AppBundle:Product
+// and aliases it to "p"
+$query = $repository->createQueryBuilder('p')
+                    ->where('p.price > :price')
+                    ->setParameter('price', '19.99')
+                    ->orderBy('p.price', 'ASC')
+                    ->getQuery();
+
+$products = $query->getResult();
+// to get just one result:
+// $product = $query->setMaxResults(1)->getOneOrNullResult();</code></pre>
+
+                <aside class="notes">
+                    <p>La requête effectue la même chose qu'avec l'exemple en DQL précédent.</p>
+
+                    <p>Contrairement au SQL, QueryBuilder est une API pour construire des requêtes. C'est donc plus
+                        facile pour construire des requêtes dynamiques comme itérer sur des paramètres ou des filtres. </p>
+
+                    <p>Puisqu'il construit la requête à notre place, aucune adaptation de code sera nécessaire pour les
+                    requêtes si on passe de MySQL à MongoDB, par ex.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Intégration de doctrine avec profile Symfony</h4>
+
+                <img src="images/doctrine-debug.png" />
+
+                <aside class="notes">
+                    <p>Quand on affiche une page en mode dev, le profiler Symfony est câblé avec Doctrine ce qui nous permet
+                        de voir combien de requêtes ont été effectuées.
+                    </p>
+                    <p>Si la page affiche beaucoup de requêtes, pour une seule page, il est peut-être temps de regarder si
+                        il n'y a pas de problèmes d'optimisations.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Relations et associations</h3>
+
+                <pre class="fragment"><code class="php">// src/AppBundle/Entity/Category.php
+
+// ...
+use Doctrine\Common\Collections\ArrayCollection;
+
+class Category
+{
+    // ...
+
+    /**
+    * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+    */
+    private $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+}</code></pre>
+
+                <aside class="notes">
+                    <p>Supposez que notre objet produit appartient maintenant a exactement une catégorie.
+                    Dans ce cas, on voudrait un objet "Category" qui soit relié à notre objet "Product".</p>
+                </aside>
+            </section>
+
+            <section>
+                <pre><code class="php">// src/AppBundle/Entity/Product.php
+
+// ...
+class Product
+{
+    // ...
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+    * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+    */
+    private $category;
+}</code></pre>
+
+                <aside class="notes">
+                    <p>Expliquer les annotations OneToMany et ManyToOne</p>
+                    <p>[L'annotation JoinColumn sera expliqué dans la page suivante.]</p>
+                </aside>
+            </section>
+
+            <section>
+                <img src="images/doctrine-relation-mapping-information.png" />
+
+                <aside class="notes">
+                    <p>Ignore the Doctrine metadata for a moment. You now have two classes - Category and Product with a
+                        natural one-to-many relationship. The Category class holds an array of Product objects and the
+                        Product object can hold one Category object. In other words - you've built your classes in a way
+                        that makes sense for your needs. The fact that the data needs to be persisted to a database is
+                        always secondary.
+
+                        Now, look at the metadata above the $category property on the Product class. The information
+                        here tells Doctrine that the related class is Category and that it should store the id of the
+                        category record on a category_id field that lives on the product table. In other words, the
+                        related Category object will be stored on the $category property, but behind the scenes,
+                        Doctrine will persist this relationship by storing the category's id value on a category_id
+                        column of the product table.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Sauvegarde des entités liées</h4>
+
+                <pre><code class="php">// ...
+
+use AppBundle\Entity\Category;
+use AppBundle\Entity\Product;
+use Symfony\Component\HttpFoundation\Response;
+
+class DefaultController extends Controller
+{
+    public function createProductAction()
+    {
+        $category = new Category();
+        $category->setName('Computer Peripherals');
+
+        $product = new Product();
+        $product->setName('Keyboard');
+        $product->setPrice(19.99);
+        $product->setDescription('Ergonomic and stylish!');
+
+        // relate this product to the category
+        $product->setCategory($category);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($category);
+        $em->persist($product);
+        $em->flush();
+
+        return new Response(
+            'Saved new product with id: '.$product->getId()
+            .' and new category with id: '.$category->getId()
+        );
+    }
+}</code></pre>
+                <aside class="notes">
+                    <p>Now, a single row is added to both the category and product tables. The product.category_id
+                        column for the new product is set to whatever the id is of the new category. Doctrine manages
+                        the persistence of this relationship for you.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Récupération d'objets liés</h4>
+
+                <pre><code class="php">$product = $productRepository->find($productId);
+$categoryName = $product->getCategory()->getName();</code></pre>
+
+                <img src="images/doctrine-relation-retrieve-workflow.png" />
+
+                <aside class="notes">
+                    <p>Lorsque l'on a besoin de récupérer des objets via des associations, on procède de la même manière qu'avant.</p>
+                    <p>La récupération de la catégorie est implicite grâce à getCategory().</p>
+                    <p>Décrire le workflow en pensant aux <strong>proxies</strong>, <strong>optimisation de requêtes</strong>, ...</p>
+                    <p>Deux autres façons de récupérer la catégorie liée au produit sans extra requetes :</p>
+                    <ul>
+                        <li>Utiliser une requête personnalisée qui effectue une jointure.</li>
+                        <li>Utiliser une annotation doctrine sur l'entité Product pour dire de TOUJOURS récupérer les catégories.</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Lifecycle Callbacks</h3>
+
+                <pre><code class="php">// src/AppBundle/Entity/Product.php
+
+/**
+* @ORM\PrePersist
+*/
+public function setUpdatedDate()
+{
+    $this->updatedDate = new \DateTime();
+}</code></pre>
+
+                <p><small>Events disponibles : preRemove, postRemove, prePersist, postPersist, preUpdate, postUpdate, postLoad,
+                    loadClassMetadata, onClassMetadataNotFound, preFlush, onFlush, postFlush, onClear.</small></p>
+
+                <aside class="notes">
+                    <p>Parfois, vous voulez effectuer une action juste avant qu'une entité soit enregistrée ou
+                        supprimée.</p>
+
+                    <p>Ces types d'actions sont des "lifecycle callbacks" puisque ce sont des méthodes de callback qui
+                        seront exécutées durant différentes étapes du cycle de vie d'une entité. </p>
+
+                    <p>Exemple d'utilisation : création de slug automatique.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Commandes doctrine en vrac</h4>
+
+                <pre><code>php bin/console doctrine:database:create
+php bin/console doctrine:generate:entity
+php bin/console doctrine:generate:entities AppBundle/Entity/Product
+php bin/console doctrine:schema:update --force</code></pre>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h2>La validation</h2>
+
+                <ul style="margin-bottom: 1em;">
+                    <li class="fragment">Tâche récurrente dans les applications web.</li>
+                    <li class="fragment">Tâche ingrate</li>
+                </ul>
+
+                <h6 class="fragment">Le composant Validator de Symfony</h6>
+                <ul>
+                    <li class="fragment">Basé sur la spécification <a href="https://jcp.org/en/jsr/detail?id=303">JSR303 Bean Validation</a>. <small>(Oui, c'est une spécification Java.)</small></li>
+                    <li class="fragment">Déclaration des validations via annotations, YAML ou PHP.</li>
+                </ul>
+                <aside class="notes">
+                    <p>1. Par exemple, les données issues des formulaires ont besoin d'être validées. Les données ont aussi besoin d'etre validées avant d'etre écrire en BDD (255 caractères max par ex)</p>
+
+                </aside>
+
+            </section>
+
+            <section>
+                <h3>Généralités</h3>
+
+                <pre><code class="php">// src/AppBundle/Entity/Author.php
+
+// ...
+use Symfony\Component\Validator\Constraints as Assert;
+
+class Author
+{
+    /**
+    * @Assert\NotBlank()
+    */
+    public $name;
+}</code></pre>
+            </section>
+
+            <section>
+                <h3>Utilisation du service de validation</h3>
+
+                <pre><code class="php">// ...
+use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Author;
+
+public function authorAction()
+{
+    $author = new Author();
+
+    // ... do something to the $author object
+
+    $validator = $this->get('validator');
+
+    /** @var \Symfony\Component\Validator\ConstraintViolationList */
+    $errors = $validator->validate($author);
+
+    if (count($errors) > 0) {
+        /*
+         * Uses a __toString method on the $errors variable which is a
+         * ConstraintViolationList object. This gives us a nice string
+         * for debugging.
+         */
+        $errorsString = (string) $errors;
+
+        return new Response($errorsString);
+    }
+
+    return new Response('The author is valid! Yes!');
+}</code></pre>
+            </section>
+
+            <section>
+                <h4>Affichage des erreurs</h4>
+
+                <pre><code class="php">if (count($errors) > 0) {
+    return $this->render('author/validation.html.twig', array(
+        'errors' => $errors,
+    ));
+}</code></pre>
+                <pre><code class="html">{# app/Resources/views/author/validation.html.twig #}
+&lt;h3&gt;The author has the following errors&lt;/h3&gt;
+&lt;ul&gt;
+{% for error in errors %}
+    &lt;li&gt;{{ error.message }}&lt;/li&gt;
+{% endfor %}
+&lt;/ul&gt;</code></pre>
+
+                <aside class="notes">
+                    <p>BON A SAVOIR : Le service validator permet de valider un objet quand on veut.</p>
+                    <p>En réalité, la validation sera pour le plus souvent utilisée avec les formulaires, permettant de
+                        valider que la donnée renseignée par l'utilisateur est correcte.</p>
+                    <p>Le composant formulaire de SF utilise en interne le composant validator, lui permettant d'effectuer cette tâche.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Contraintes</h3>
+
+                <p>Symfony inclu directement les contraintes les plus utilisées :</p>
+
+                <ul>
+                    <li class="fragment"><strong>Générales</strong>: <small>NotBlank, Blank, NotNull, IsNull, IsTrue, IsFalse, Type</small></li>
+                    <li class="fragment"><strong>String</strong>: <small>Email, Length, Url, Regex, Ip, Uuid</small></li>
+                    <li class="fragment"><strong>Nombres</strong>: <small>Range</small></li>
+                    <li class="fragment"><strong>Comparaison</strong>: <small>EqualTo, NotEqualTo, IdenticalTo, NotIdenticalTo, LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual</small></li>
+                    <li class="fragment"><strong>Date</strong>: <small>Date, DateTime, Time</small></li>
+                    <li class="fragment"><strong>Collection</strong>: <small>Choice, Collection, Count, UniqueEntity, Language, Locale, Country</small> </li>
+                    <li class="fragment"><strong>Fichier</strong>: <small>File, Image</small> </li>
+                    <li class="fragment"><strong>Financier et autres</strong>: <small>Bic, CardScheme, Currency, Luhn, Iban, Isbn, Issn</small> </li>
+                    <li class="fragment"><strong>Autres</strong>: <small>Callback, Expression, All, UserPassword, Valid</small></li>
+                </ul>
+
+                <p class="fragment">Bien sûr, nous pouvons créer nos propres validations... !</p>
+            </section>
+
+            <section>
+                <h3>Autres fonctionnalités</h3>
+
+                <ul>
+                    <li>Traduction automatique des messages d'erreur</li>
+                    <li>Groupes de validation</li>
+                    <li>Validation des entités en profondeur (parcourt d'entités au besoin)</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Les formulaires</h2>
+
+                <ul>
+                    <li class="fragment">Complexe</li>
+                    <li class="fragment">Génératrice de bugs</li>
+                    <li class="fragment">HTML redondant</li>
+                    <li class="fragment">Validation redondante</li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h3>Fonctionnalités</h3>
+
+                <ul>
+                    <li class="fragment">Validation de formulaires</li>
+                    <li class="fragment">Beaucoup de types de champs pré-existant</li>
+                    <li class="fragment">Rendu du formulaire dans un template extrèmement puissant</li>
+                    <li class="fragment">Système d'événement pour faire des formulaires dynamiques</li>
+                    <li class="fragment">Formulaires intégrés</li>
+                    <li class="fragment">Protection CRSF</li>
+                    <li class="fragment">Prototypes de formulaires \o/</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Aperçu</h3>
+
+                <pre><code class="php">// src/AppBundle/Form/Type/TaskType.php
+namespace AppBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+class TaskType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('task', TextType::class)
+            ->add('dueDate', DateType::class, array('widget' => 'single_text'))
+            ->add('save', SubmitType::class, array('label' => 'Create Task'))
+        ;
+    }
+}</code></pre>
+
+            </section>
+
+            <section>
+                <h3>Rendu du formulaire</h3>
+
+                <pre><code class="html">{# app/Resources/views/default/new.html.twig #}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}</code></pre>
+
+                <img class="fragment" src="images/form-simple.png" />
+
+                <aside class="notes">
+                    <p>Décrire les fonctions TWIG</p>
+                </aside>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>La sécurité</h2>
+                <h3>Gestion des droits</h3>
+
+                <p>Chaque utilisateur a des rôles, qui est une collection de string. Par exemple, ROLE_ADMIN, ROLE_COMMENT_WRITE, ...</p>
+            </section>
+
+            <section>
+                <h4>Sécurisation de certaines URL</h4>
+
+                <pre><code class="YAML"># app/config/security.yml
+security:
+    # ...
+
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/admin, roles: ROLE_ADMIN }</code></pre>
+
+                <aside class="notes">
+                    <p>Utile pour sécuriser des sections entières</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Sécurisation des controleurs</h4>
+
+                <pre><code class="php">// ...
+
+public function helloAction($name)
+{
+    // The second parameter is used to specify on what object the role is tested.
+    $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+    // Old way :
+    // if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+    //     throw $this->createAccessDeniedException('Unable to access this page!');
+    // }
+
+    // ...
+}</code></pre>
+
+                <aside class="notes">
+                    <p>On peut aussi sécuriser via des annotations ( @Security("has_role('ROLE_ADMIN')"))</p>
+                    <p>Ou dans les templates ({% if is_granted('ROLE_ADMIN') %})</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Sécurisation d'objets individuels</h4>
+
+                <p>Deux options</p>
+
+                <ul>
+                    <li><strong>Voters</strong>
+                        <small>Permet d'écrire votre propre logique business (ex: L'uilisateur peut éditer son post car
+                            il en est le créateur) afin de déterminer l'accès à l'utilisateur. </small></li>
+                    <li><strong>ACLs</strong>
+                        <small>Permet de créer une structure où vous pouvez assigner les accès que vous voulez (EDIT,
+                            VIEW) à n'importe quel objet du système. Utile si vous avez un administrateur capable de
+                            gérer des accès personnalisés via une interface d'administration </small></li>
+                </ul>
+
+
+                <pre><code class="php">// check for "view" access: calls all voters
+$this->denyAccessUnlessGranted('view', $post);</code></pre>
+
+                <aside class="notes">
+                    <p>Imagine you are designing a blog where users can comment on your posts. You also want a user to be able to edit their own comments, but not those of other users. Also, as the admin user, you yourself want to be able to edit all comments.</p>
+                </aside>
+            </section>
+        </section>
+
+
+        <section>
+            <section>
+                <h2><strike>Übersetzungen</strike> <b>Les traductions</b></h2>
+
+                <h3>Fonctionnalités</h3>
+                <ul>
+                    <li>Fallback de langues : fr_CA -> fr -> en</li>
+                    <li>Pluralisation (gestion Russe, ...)</li>
+                    <li>Surcharge des traductions de bundles externes</li>
+                </ul>
+                <br/>
+                <p>Traductions définies en</p>
+                <ul>
+                    <li>YAML</li>
+                    <li>XLIFF (XML)</li>
+                    <li>PHP</li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h3>Exemple basique</h3>
+
+                <pre><code class="php">use Symfony\Component\HttpFoundation\Response;
+
+public function indexAction()
+{
+    $translated = $this->get('translator')->trans('app.comment.action.add');
+
+    return new Response($translated);
+}</code></pre>
+
+                <pre class="fragment"><code class=""># Obtao\ForumBundle\Resources\translations\messages.fr.yml
+app:                                            # Bundle name
+    comment:                                    # Object name
+        action:                                 # Type: action (button, ...)
+            add: Nouveau commentaire
+        title:                                  # Type: title (h1, h2...)
+            listPage: Tous les commentaires
+# ...</code></pre>
+
+                <aside class="notes">
+                    <p>PROCESS:</p>
+                    <p>La locale de l'user courant est récupérée via la requête ou d'une autre manière (prefs par exemple)</p>
+                    <p>Un catalogue de messages traduits est chargé grâce aux ressources définies pour la locale (fr_CA).</p>
+                    <p>Les messages fallback sont aussi chargés si ils n'existent pas déjà.</p>
+                    <p>Il en résulte un grand dictionnaire de traductions.</p>
+                    <p>Si la clé de la traduction existe, alors le traducteur retourne la trad. Sinon, elle retourne le message original.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Traductions des messages de validation</h4>
+
+                <pre><code class="php">// src/AppBundle/Entity/Author.php
+use Symfony\Component\Validator\Constraints as Assert;
+
+class Author
+{
+    /**
+    * @Assert\NotBlank(message = "app.author.name.notBlank")
+    */
+    public $name;
+}</code></pre>
+            </section>
+
+            <section>
+                <h4>Vive la console !</h4>
+
+                <pre><code class="bash">$ php bin/console debug:translation fr AcmeDemoBundle</code></pre>
+
+                <img src="images/translation-debug1.png" />
+                <img src="images/translation-debug2.png" />
+            </section>
+
+            <section>
+                <h4>Gestion du pluriel</h4>
+
+                <pre><code class="php">(($number % 10 == 1) && ($number % 100 != 11))
+    ? 0
+    : ((($number % 10 >= 2)
+        && ($number % 10 <= 4)
+        && (($number % 100 < 10)
+        || ($number % 100 >= 20)))
+            ? 1
+            : 2
+);</code></pre>
+                <pre class="fragment"><code class="php">$translator->transChoice(
+    'There is one apple|There are %count% apples',
+    10,
+    array('%count%' => 10)
+);</code></pre>
+                <pre class="fragment"><code>'There is one apple|There are %count% apples'</code></pre>
+                <pre class="fragment"><code>'Il y a %count% pomme|Il y a %count% pommes'</code></pre>
+                <pre class="fragment"><code>'{0} There are no apples|{1} There is one apple|]1,19] There are %count% apples|[20,Inf[ There are many apples'</code></pre>
+
+                <aside class="notes">
+                    <p>1. La pluralisation est un sujet sensible car les règles peuvent être complexes.
+                        Par exemple, voici la représentation mathématique des règles de pluralisation en russe.</p>
+                    <p>2. Puisque les traductions dépendent du nombre, il faut le passer en paramètre.</p>
+                    <p>3. En anglais, la plupart des mots ont la forme singulière lorsqu'il y a exactement un objet et un pluriel sur les autres formes (0, 2...)
+                        Donc si count vaut 1, la première chaine sera utilisée.</p>
+                    <p>3. En français, les règles sont différentes. La forme singulière est utilisée lorsque l'on a 0 ou 1 objet.</p>
+                    <p>4. On peut aussi spécifier les intervales que l'on souhaite lors de la traduction</p>
+                </aside>
+            </section>
+        </section>
+
+
+        <!--Penser que des bundles peuvent exporter les trad via API !-->
+        <!--Organisation OBTAO-->
+
+        <section>
+            <section>
+                <h2>Le con<span style="opacity: 0.7;">teneur</span> de service</h2>
+
+                <ul>
+                    <li class="fragment">Une application PHP moderne est remplie d'objets.</li>
+                    <li class="fragment">Service Container !</li>
+                    <li class="fragment">Très rapide (utilise du cache)</li>
+                    <li class="fragment">Améliore l'architecture</li>
+                    <li class="fragment">Implémente l'Inversion de contrôle (Injection de dépendance)</li>
+                    <li class="fragment">Simple</li>
+                    <li class="fragment">Déclaration en YAML, PHP, XML</li>
+                </ul>
+
+                <aside class="notes">
+                    <p>1. Un objet peut faciliter l'envoi de mail pendant qu'un autre permet de persister une information ou d'écrire des logs.</p>
+                    <p>1. Le fait est qu'une application fait beaucoup de choses qui sont organisés dans des objets pour gérer chaque tâche.</p>
+                    <p>Ce chapitre traîte d'un objet PHP spécial qui aide à instancier, organiser et récupérer plusieurs objets de l'application.</p>
+                    <p>2. L'objet service container permet de standardiser et centraliser la manière dont les objets sont instanciés.</p>
+                    <p>3. A apprendre et à développer</p>
+                    <p>4. Permet de réutiliser et de découpler le code plus facilement</p>
+                    <p>Toutes les classes symfony utilisent le service container, permettant d'étendre, configurer ou utiliser n'importe quel objet en Symfony.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h3>C'est quoi.. ?</h3>
+
+                <pre><code class="php">use AppBundle\Mailer;
+
+$mailer = new Mailer('sendmail');
+$mailer->send('ryan@example.com', ...);</code></pre>
+
+                <aside class="notes">
+                    <p>La classe Mailer permet d'envoyer un mail.</p>
+                    <p>Mais que fait-on si on veut utiliser cet objet autre part ? On veut pas répeter l'instanciation ni la configuration.</p>
+                    <p>Et si on change le type de transport d'email ? On est obligé de changer l'instanciation sur chaque appel !</p>
+                    <p>Expliquer inversion de contrôle et injection de dépendance</p>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Création d'un service</h3>
+
+                <pre><code># app/config/services.yml
+services:
+    app.mailer:
+        class:        AppBundle\Mailer
+        arguments:    [sendmail]</code></pre>
+
+                <pre class="fragment"><code class="php">class HelloController extends Controller
+{
+    // ...
+
+    public function sendEmailAction()
+    {
+        // ...
+        $mailer = $this->get('app.mailer');
+        $mailer->send('ryan@foobar.net', ...);
+    }
+}</code></pre>
+                <aside class="notes">
+                    <p>Lors de la demande, le container construit l'objet et le retourne.</p>
+                    <p>Un service n'est jamais construit jusqu'à ce qu'on l'appelle.</p>
+                    <p>Une seule instance !</p>
+                </aside>
+
+            </section>
+
+            <section>
+                <h3>Passage de paramètre</h3>
+
+                <pre><code># app/config/services.yml
+parameters:
+    app.mailer.transport:  sendmail
+
+services:
+    app.mailer:
+        class:        AppBundle\Mailer
+        arguments:    ['%app.mailer.transport%']</code></pre>
+
+            </section>
+
+            <section>
+                <h3>Injection de service</h3>
+
+                <pre><code># app/config/services.yml
+services:
+    app.mailer:
+        # ...
+
+    app.newsletter_manager:
+        class:     AppBundle\Newsletter\NewsletterManager
+        arguments: ['@app.mailer']</code></pre>
+
+                <pre class="fragment"><code class="php">// src/AppBundle/Newsletter/NewsletterManager.php
+namespace AppBundle\Newsletter;
+
+use AppBundle\Mailer;
+
+class NewsletterManager
+{
+    protected $mailer;
+
+    public function __construct(Mailer $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+
+    // ...
+}</code></pre>
+
+            </section>
+
+            <section>
+                <h3>Injection de service</h3>
+                <h4>Hors constructeur</h4>
+
+                <pre><code>services:
+    app.mailer:
+        # ...
+    app.newsletter_manager:
+        class:     AppBundle\Newsletter\NewsletterManager
+        calls:
+            - [setMailer, ['@app.mailer']]</code></pre>
+
+                <pre class="fragment"><code class="php">// src/AppBundle/Newsletter/NewsletterManager.php
+namespace AppBundle\Newsletter;
+use AppBundle\Mailer;
+
+class NewsletterManager {
+    protected $mailer;
+
+    public function setMailer(Mailer $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+// ...
+}</code></pre>
+
+            </section>
+
+            <section>
+                <h3>Injection de service</h3>
+                <h4>Récupération de l'objet Request</h4>
+
+                <pre><code>services:
+newsletter_manager:
+class:     Acme\HelloBundle\Newsletter\NewsletterManager
+arguments: ["@request_stack"]</code></pre>
+
+                <pre class="fragment"><code class="php">namespace Acme\HelloBundle\Newsletter;
+
+use Symfony\Component\HttpFoundation\RequestStack;
+
+class NewsletterManager
+{
+    protected $requestStack;
+
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->requestStack = $requestStack;
+    }
+
+    public function anyMethod()
+    {
+        $request = $this->requestStack->getCurrentRequest();
+        // ... do something with the request
+    }
+
+    // ...
+}</code></pre>
+
+            </section>
+
+            <section>
+                <h4>Service optionnel</h4>
+
+                <pre><code># app/config/services.yml
+services:
+    app.newsletter_manager:
+        class:     AppBundle\Newsletter\NewsletterManager
+        arguments: ['@?app.mailer']</code></pre>
+
+                <pre><code class="php">public function __construct(Mailer $mailer = null)
+{
+    // ...
+}</code></pre>
+            </section>
+
+            <section>
+                <h3>Les services taggués</h3>
+
+                <pre><code># app/config/services.yml
+services:
+    foo.twig.extension:
+        class: AppBundle\Extension\FooExtension
+        public: false
+        tags:
+            -  { name: twig.extension }</code></pre>
+
+                <pre class="fragment"><code class="php">use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\Reference;
+
+class TransportCompilerPass implements CompilerPassInterface
+{
+    public function process(ContainerBuilder $container)
+    {
+        if (!$container->has('acme_mailer.transport_chain')) {
+            return;
+        }
+
+        $definition = $container->findDefinition(
+            'acme_mailer.transport_chain'
+        );
+
+        $taggedServices = $container->findTaggedServiceIds(
+            'acme_mailer.transport'
+        );
+        foreach ($taggedServices as $id => $tags) {
+            $definition->addMethodCall(
+                'addTransport',
+                array(new Reference($id))
+            );
+        }
+    }
+}</code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Autres</h2>
+
+                <ul>
+                    <li><a href="http://symfony.com/doc/current/book/testing.html">Les tests</a></li>
+                    <li><a href="http://symfony.com/doc/current/book/http_cache.html">Cache HTTP</a></li>
+                    <li><a href="http://symfony.com/doc/current/book/performance.html">Performance</a></li>
+                </ul>
+
+
+            </section>
+        </section>
+
+
+        <section>
+            <h1>Bundles populaires</h1>
+        </section>
+
+        <section>
+            <section>
+                <h2 class="no-caps">FOSUserBundle</h2>
+
+                <ul>
+                    <li>Gestion des utilisateurs</li>
+                    <li>Stockage Doctrine ou ODM ou Propel</li>
+                    <li>Formulaire d'inscription</li>
+                    <li>Mot de passe oublié</li>
+                    <li>...</li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="no-caps" style="">StofDoctrineExtension&#8208;Bundle</h2>
+
+                <ul>
+                    <li>Installe et configure 11 extensions Doctrine2</li>
+                    <li>l3pp4rd / DoctrineExtensions</li>
+                </ul>
+
+                    <pre><code>/**
+ * @Gedmo\Timestampable(on="create")
+ * @ORM\Column(type="datetime")
+ */
+private $created;
+
+/**
+ * @Gedmo\Blameable(on="create")
+ * @ORM\Column(type="string")
+ */
+private $createdBy;</code></pre>
+
+                <aside class="notes">
+                    <p>Cité dans la doc officielle</p>
+                </aside>
+            </section>
+            <section>
+                <h2>♥ FOS ♥</h2>
+
+                <ul>
+                    <li>FOSCommentBundle</li>
+                    <li>FOSOAuthServerBundle</li>
+                    <li>FOSMessageBundle</li>
+                    <li>FOSFacebookBundle</li>
+                    <li>FOSTwitterBundle</li>
+                    <li>FOSJsRoutingBundle</li>
+                    <li>FOSElastica</li>
+                </ul>
+            </section>
+        </section>
+
+
+
+        <section>
+            <section>
+                <h3>Bonus: Méthodologie et organisation du CSS avec SASS</h3>
+                <h4>Ressources</h4>
+
+                <ul>
+                    <li><a href="http://www.alsacreations.com/article/lire/1641-bonnes-pratiques-en-css-bem-et-oocss.html">Bonnes pratiques en CSS : BEM et OOCSS</a></li>
+                    <li><a href="http://docssa.info/">DoCSSa 2.0 (Sass based CSS architecture and methodology)</a></li>
+                    <li><a href="http://sassdoc.com/">SASSDOC</a> Création automatique de docs d'un projet SASS</li>
+                </ul>
+
+                <ul>
+                    <li><a href="http://knpbundles.com/">http://knpbundles.com/</a></li>
+                    <li><a href="http://symfohub.com/bundles">http://symfohub.com/bundles</a></li>
+                    <li>
+                        <a href="https://packagist.org/search/?type=bundle">https://packagist.org/search/<b>?type=bundle</b></a>
+                    </li>
+                </ul>
+            </section>
+        </section>
+
+        <!--TODO :-->
+
+        <!--URL : http://symfony.com/doc/current/book/controller.html-->
+        <!--URL : http://fr.slideshare.net/jaycreation/presentation-symfony-4744322-->
+        <!--URL : https://www.overleaf.com/2283839stnfrb#/5864229/-->
+        <!--URL : http://obtao.com/blog/2015/04/symfony-live-paris-2015-cetait-comment-2/-->
+        <!--URL : http://afsy.fr/-->
+        <!--URL : http://symfony.com/doc/current/book/controller.html-->
+
+        <!--EventListener-->
+        <!--.....................-->
+        <!--Notre implémentation de Symfony-->
+        <!--DunglasAPI-->
+        <!--Schéma-->
+        <!--Organisation style graphique-->
+        <!--(Easy to learn, hard to master)-->
+        <!--CSS Objet-->
+        <!--BEM-->
+        <!--Template CSS à la bootstrap-->
+
+    </div>
+
+</div>
+
+<footer class="joli">
+    Les Bundles Symfony2 - Symfony Live 2013 - <a href="http://jolicode.com/"><img src="./lib/font/logo-fond-noir.svg"
+                                                                                   alt="JoliCode" height="16px"
+                                                                                   style="vertical-align: middle"/></a>
+    - @damienalexandre
+</footer>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            //{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            //{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+            // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
